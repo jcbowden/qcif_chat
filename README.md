@@ -53,7 +53,10 @@ cd ..
 python -m flask --app app_session --debug run  --host=0.0.0.0
 ```
 
-## Architecture Diagram
+## Architecture Description
+The application creates a database table of ```usernames``` and a separate table of ```messages```. The messages have a ```Sender``` and a ```Receiver``` field, that correspond to a ```User``` in the ```usernames``` table. The Sender is a user that has his/her ```User``` username string added to the ```sessions['chatuser']``` cookies. The ```Receiver``` is selected from a list of users that are presented in the ```chatwith.html```page table.  
+Once a ```Receiver``` is chosen by the current user (who is designated as the ```Sender```) then the ```/chatwithme/<Receiver>``` page is presented. The page presents a ```text``` area , that allows a ```message``` to be written to the database, and a formatted version is also added in a list to the ```/chatwithme/<Receiver>``` page. All previous messages between the Sender and the Receiver are presented, and sorted in chronological order using the ```message``` time stamp. A user (```Sender```) can check for messages from the ```Receiver``` and can also opt to chat with someone else (form_c), which brings them back to the ```chatwith.html```page table.  
+A user can then logout as the current ```Sender```, which removes the ```session['chatuser']``` field from the session dictionary.
 ![ QCIF Chat Architecture](images/qcif_chat.drawio.png) 
 
 ## Advanced (and untested)
