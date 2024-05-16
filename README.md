@@ -62,8 +62,8 @@ A user can then logout as the current ```Sender```, which removes the ```session
 
 ## Advanced (and untested)
 ### Automatic updates from DB changes 
-
-To get changestream , we need MongoDB run as a replica set. Set up a Docker network and connect 3 images to it
+There is probably an easier Javascript polling option to do this, however, there is this option too.  
+To get [changestream](https://pymongo.readthedocs.io/en/stable/api/pymongo/change_stream.html), we need MongoDB run as a replica set. Set up a Docker network and connect 3 images to it
 ```
 docker network create mongoCluster
 docker run -d --rm -p 27017:27017 --name mongo1 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo1
