@@ -1,0 +1,52 @@
+<!-- chatwith.html (was print.html)  -->
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chatwith.css') }}">
+     </head>
+   <body>
+       <center>
+      <p>
+      
+    {% if session['chatuser'] %}
+        <h3>Greetings {{session['chatuser'] }}</h3>
+        <p>Please select a user to chat with:</p>
+         <br><br>
+         <table id="myTable" border = 1 style="background-color:rgb(179, 204, 208); width:60%" >
+            {% for ttl in headings %}
+                <td><center><b> {{ ttl }} </b></center></td> 
+            {% endfor %}
+            {% for key, value in newuserdict.items() %}
+            <tr>
+                {% for sub, User in value.items() %}
+                    {% if session['chatuser'] != User %}
+                            <td> <center> <a href="http://localhost:5000/chatwithme/{{key}}">{{ User }}</a> <center> </td>
+                    {%endif%}
+
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            
+         </table>
+     {% else %}
+        <center>
+        <form action="http://localhost:5000/">
+            <p><input type = "submit" 
+                      id="submit"
+                      value = "Register User"  /></p> 
+        </form>
+        </center>
+    {% endif %}
+      <center>
+        <form action="http://localhost:5000/logout_chat">
+            <p><input type = "submit" 
+                      id="logout"
+                      value = "Logout"  /></p> 
+        </form>
+        </center>
+   
+         
+      </p>
+      </center>
+   </body>
+   
+<html>

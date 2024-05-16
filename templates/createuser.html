@@ -1,0 +1,41 @@
+<!-- createuser.html (was student.html)  -->
+<html>
+   <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/createuser.css') }}">
+   </head>
+   <body >
+      <br>
+      <hr>
+      <h1>QCIF Chat App</h1>
+      <hr>
+     <h2>Add new User </h2>
+     
+   {% if session['chatuser'] %}
+    <h3>Greetings {{session['chatuser'] }}</h3>
+   {% else %}
+     <form id="chatuser"  action = "http://localhost:5000/adduser" method = "POST">
+       <p>
+       <label>Chat User Name </label>
+       <input type = "text" id="chatuser" name = "chatuser" />
+       </p>
+       <button type="submit">Submit</button> 
+      </form>
+      <br/>
+   {% endif %}
+     <br>
+     <form id ="form_s" action = "http://localhost:5000/chatwith" method = "GET">
+         <input type = "submit" 
+                id="getAll"
+                value = "Chat with Users"  />      </form>
+     <br/>
+     {% if session['chatuser'] %}
+
+        <form action="http://localhost:5000/logout_chat">
+            <p><input type = "submit" 
+                      id="logout"
+                      value = "Logout"  /></p> 
+        </form>
+
+      {% endif %} 
+   </body>
+</html>
