@@ -40,7 +40,7 @@ docker run -d
 
 ### 3/ Run the application, exposing all the network interfaces 
 N.B. --host=0.0.0.0 is used so we can access the webpages from outside the machine in which it is running.
- (change IP address fisrt - currently 172.30.143.25)
+ (change IP address fisrt - currently localhost)
 ```
 ip -4 address
 (find the machines externally acessible address)
