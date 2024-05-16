@@ -12,7 +12,7 @@
             </br>
             
             </form>
-            <form id ="form_a" class="actionsForm" action = "http://172.30.143.25:5000/chatwithme/{{sname}}" method = "POST">
+            <form id ="form_a" class="actionsForm" action = "http://localhost:5000/chatwithme/{{sname}}" method = "POST">
             <p>Chat box: </p>
             <p>
             <input type="text" id="message" name="message" required minlength="1" maxlength="200" size="80" />
@@ -24,7 +24,7 @@
             </br>
             </form>
             <p>
-            <form id ="form_b" class="actionsForm" action = "http://172.30.143.25:5000/chatwithme/{{sname}}" method = "GET">
+            <form id ="form_b" class="actionsForm" action = "http://localhost:5000/chatwithme/{{sname}}" method = "GET">
             
             <input id="submit"  
                       type = "submit" value = "Update Messages" /> 
@@ -32,7 +32,7 @@
             </form>
             </p>
             <p>
-            <form id ="form_c" class="actionsForm" action = "http://172.30.143.25:5000/chatwith" method = "GET">
+            <form id ="form_c" class="actionsForm" action = "http://localhost:5000/chatwith" method = "GET">
             
             
               <input id="submit"  
@@ -52,7 +52,7 @@
             
         {% else %}
             <center>
-            <form action="http://172.30.143.25:5000/">
+            <form action="http://localhost:5000/">
                 <p><input type = "submit" 
                           id="submit"
                           value = "Register as a Chat User"  /></p> 

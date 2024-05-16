@@ -13,7 +13,7 @@
    {% if session['chatuser'] %}
     <h3>Greetings {{session['chatuser'] }}</h3>
    {% else %}
-     <form id="chatuser"  action = "http://172.30.143.25:5000/adduser" method = "POST">
+     <form id="chatuser"  action = "http://localhost:5000/adduser" method = "POST">
        <p>
        <label>Set Chat User Name </label>
        <input type = "text" id="chatuser" name = "chatuser" />
@@ -25,14 +25,14 @@
       <br/>
    {% endif %}
      <br>
-     <form id ="form_s" action = "http://172.30.143.25:5000/chatwith" method = "GET">
+     <form id ="form_s" action = "http://localhost:5000/chatwith" method = "GET">
          <input type = "submit" 
                 id="getAll"
                 value = "Chat with Users"  />      </form>
      <br/>
      {% if session['chatuser'] %}
 
-        <form id ="logout" action="http://172.30.143.25:5000/logout_chat">
+        <form id ="logout" action="http://localhost:5000/logout_chat">
             <p><input type = "submit" 
                       id="logout"
                       value = "Logout"  /></p> 

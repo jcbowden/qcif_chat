@@ -21,7 +21,7 @@
             <tr>
                 {% for sub, User in value.items() %}
                     {% if session['chatuser'] != User %}
-                            <td> <center> <a href="http://172.30.143.25:5000/chatwithme/{{key}}">{{ User }}</a> <center> </td>
+                            <td> <center> <a href="http://localhost:5000/chatwithme/{{key}}">{{ User }}</a> <center> </td>
                     {%endif%}
 
                 {% endfor %}
@@ -31,7 +31,7 @@
          </table>
      {% else %}
         <center>
-        <form id="register" action="http://172.30.143.25:5000/">
+        <form id="register" action="http://localhost:5000/">
             <p><input type = "submit" 
                       id="submit"
                       value = "Register User"  /></p> 
@@ -39,7 +39,7 @@
         </center>
     {% endif %}
       <center>
-        <form action="http://172.30.143.25:5000/logout_chat">
+        <form action="http://localhost:5000/logout_chat">
             <p><input type = "submit" 
                       id="logout"
                       value = "Logout"  /></p> 
