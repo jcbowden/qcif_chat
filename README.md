@@ -6,19 +6,20 @@ Date: 16/05/024
 Original Code and Instructions from: https://earthly.dev/blog/mongodb-docker/
 
 To run, 
-- 1 Get application code
-- 2 Set up a MongoDB in a docker container
-- 3 Run the Flask Python application
+ 1. Get application code
+ 2. Set up a MongoDB in a docker container
+ 3. Run the Flask Python application
 
 
-###  1/Get the application code
-git clone https://github.com/jcbowden/qcif_chat.git
-cd qcif_chat
-pip install -r requirements.txt
+### 1/ Get the application code
+```
+git clone https://github.com/jcbowden/qcif_chat.git  
+cd qcif_chat  
+pip install -r requirements.txt  
+```
 
 
-
-### 2/ The simplest setup of MongoDB
+### 2/ Setup of MongoDB in Docker
 ```
 # we use a volume, so data is persisted if container is stopped
 sudo docker run -d \
