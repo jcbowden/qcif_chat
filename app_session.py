@@ -46,6 +46,7 @@ def database_new_chatuser(new_result):
             
             entry_status = usernames.insert_one(user_details)
             return entry_status
+            
 # was: database_update_entry
 def database_update_chatuser(key_val,new_result):
             global usernames
@@ -89,8 +90,10 @@ def getuser():
    return redirect(url_for('createuser'))
    
    
-# Adds the chatuser value to the Flask session and also adds the user to the database
-@app.route('/adduser', methods=['GET', 'POST'])
+# Adds the chatuser value to the Flask session and also adds the user to the
+# database. There seems to be some technical debt here inherited from the 
+# original example project
+@app.route('/adduser', methods=['POST'])
 def adduser():
     if request.method == 'POST':
         # Save the form data to the session object
@@ -102,8 +105,8 @@ def adduser():
 
         if usernames.find({'Name': result['chatuser'] }).count() > 0:
             avaliability_flag=True
-            Queryresult = usernames.find_one({'Name': result['chatuser']})
-            pass_dict=Queryresult['User']
+            # Queryresult = usernames.find_one({'Name': result['chatuser']})
+            # pass_dict=Queryresult['User']
         else:
             avaliability_flag=False
         print('Check if key available: ',avaliability_flag)
@@ -122,10 +125,6 @@ def adduser():
     
 @app.route('/createuser', methods=['GET', 'POST'])
 def createuser():
-    #if request.method == 'POST':
-        # Save the form data to the session object
-        # session['chatuser'] = request.form['chatuser']
-    #    return redirect(url_for('chatwith'))
     return render_template('createuser.html')
 
 
@@ -151,7 +150,7 @@ def get_sorted_messages(Sender, Receiver ):
         message_list.append(document)
     for document in messages.find({'Sender': Receiver, 'Receiver': Sender  }):
         message_list.append(document)
-    sorted_list = sorted(message_list, key=lambda d: d['date'])
+    sorted_list = sorted(message_list, key=lambda d: d['date'], reverse=True)
     message_num = 1
     message_dict = {}
     for document in sorted_list:
@@ -174,9 +173,9 @@ def chatwithme(iname):
         
         return render_template('chatwithmepage.html',sname=iname,  all_messages=message_dict)
     else:
-        Queryresult = messages.find_one({'Sender': session['chatuser'], 'Receiver': iname })
-        if Queryresult == None:
-            messages.insert_one(format_first_post(session['chatuser'] , iname))
+        # Queryresult = messages.find_one({'Sender': session['chatuser'], 'Receiver': iname })
+        # if Queryresult == None:
+        #     messages.insert_one(format_first_post(session['chatuser'] , iname))
         message_dict = get_sorted_messages(session['chatuser'], iname )
         return render_template('chatwithmepage.html',sname=iname,  all_messages=message_dict)
         

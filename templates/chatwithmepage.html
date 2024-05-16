@@ -3,39 +3,48 @@
       <link rel="stylesheet" href="{{ url_for('static', filename='css/chatwithme.css') }}">
    </head>
       <body>
-         <h2 style="color:rgb(7, 3, 194);"> Chatter here: </h2>
+        <hr>
+        <h1>QCIF Chat App</h1>
+        <hr>
         <br>
         {% if session['chatuser'] %}
-
-            <p>Greetings {{session['chatuser'] }} you are chatting with {{sname}} </p>
-
+            <h3 style="color:rgb(7, 3, 194);"> Greetings {{session['chatuser'] }} you are chatting with {{sname}} </h3>
             </br>
             
             </form>
-            <form id ="form_s" class="actionsForm" action = "http://localhost:5000/chatwithme/{{sname}}" method = "POST">
+            <form id ="form_a" class="actionsForm" action = "http://172.30.143.25:5000/chatwithme/{{sname}}" method = "POST">
             <p>Chat box: </p>
-            <input type="text" id="message" name="message" required minlength="1" maxlength="200" size="80" />
-            <br>
             <p>
+            <input type="text" id="message" name="message" required minlength="1" maxlength="200" size="80" />
+            </p>
+            <br>
+            
             <input id="submit"  
                       type = "submit" value = "Send Message" /> 
-            </p>
             </br>
             </form>
-
             <p>
-            <form id ="form_s" class="actionsForm" action = "http://localhost:5000/chatwith" method = "GET">
-            <p>
-              <input type = "submit"  
-                     value = "Chat with another user"  /> </p>
-            </form>
+            <form id ="form_b" class="actionsForm" action = "http://172.30.143.25:5000/chatwithme/{{sname}}" method = "GET">
             
+            <input id="submit"  
+                      type = "submit" value = "Update Messages" /> 
+            
+            </form>
+            </p>
+            <p>
+            <form id ="form_c" class="actionsForm" action = "http://172.30.143.25:5000/chatwith" method = "GET">
+            
+            
+              <input id="submit"  
+                     type = "submit" value = "Chat with another user"  /> 
+            </form>
+            </p>
             </br>
             <div id="chat_history" class="chat_history1">
             {% for key, value in all_messages.items() %}
                 
                 <p id="chat_history_p" class="chat_history_p1">
-                    <center> {{ value }} <center>
+                     {{ value }}
                 </p>
                
             {% endfor %}
@@ -43,7 +52,7 @@
             
         {% else %}
             <center>
-            <form action="http://localhost:5000/">
+            <form action="http://172.30.143.25:5000/">
                 <p><input type = "submit" 
                           id="submit"
                           value = "Register as a Chat User"  /></p> 
@@ -52,4 +61,14 @@
        {% endif %}
       
         </body>
+<script>
+function refresh() {
+    // make Ajax call here, inside the callback call:
+    setTimeout(refresh, 5000);
+    // ...
+}
+// initial call, or just call refresh directly
+setTimeout(refresh, 5000);
+</script>
+
 </html>

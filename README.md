@@ -6,9 +6,9 @@ Date: 16/05/024
 Original Code and Instructions from: https://earthly.dev/blog/mongodb-docker/
 
 To run, 
-1/ Get application code
-2/ Set up a MongoDB in a docker container
-3/ Run the Flask Python application
+- 1 Get application code
+- 2 Set up a MongoDB in a docker container
+- 3 Run the Flask Python application
 
 
 ###  1/Get the application code
@@ -39,8 +39,8 @@ docker run -d
 
 
 ### 3/ Run the application, exposing all the network interfaces 
-N.B. --host=0.0.0.0 is used so we can access the webpages from outside the machine in which it is running.
- (change IP address fisrt - currently localhost)
+
+ (change IP address first - currently using localhost in all html template files)
 ```
 ip -4 address
 (find the machines externally acessible address)
@@ -48,10 +48,13 @@ cd templates
 sed -i -e 's/localhost/<YOUR_IP_ADDRESS>/g' *
 cd ..
 
+#  N.B. using --host=0.0.0.0  so we can access the webpages
+#  from outside the machine in which it is running.
 python -m flask --app app_session --debug run  --host=0.0.0.0
 ```
 
-
+## Architecture Diagram
+![ QCIF Chat Architecture](images/qcif_chat.drawio.png) 
 
 ## Advanced (and untested)
 ### Automatic updates from DB changes 
